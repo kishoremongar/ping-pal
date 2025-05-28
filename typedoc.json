@@ -1,0 +1,15 @@
+{
+  "entryPointStrategy": "expand",
+  "entryPoints": ["src"],
+  "out": "docs",
+  "exclude": [
+    "**/__tests__/**",
+    "**/*.spec.*"
+    // "**/*.js" // Exclude JavaScript files if you only want TS docs
+  ],
+  "includeVersion": true,
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "hideGenerator": true,
+  "tsconfig": "./tsconfig.json"
+}

@@ -1,0 +1,61 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --fix \"src/**/*.{ts,js,tsx,jsx}\" --config .eslintrc.json",
+    "prepare": "husky",
+    "test": "jest --coverage --passWithNoTests",
+    "test:watch": "jest --watch",
+    "commitlint": "commitlint --edit",
+    "type-check": "tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@tanstack/react-query": "^5.67.3",
+    "axios": "^1.8.2",
+    "crypto-browserify": "^3.12.1",
+    "next": "14.2.24",
+    "react": "^18",
+    "react-dom": "^18",
+    "stream-browserify": "^3.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "npx run lint",
+      "npx test"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
+    "@swc/jest": "^0.2.37",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^15.2.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.4.3",
+    "postcss": "^8",
+    "redux-mock-store": "^1.5.5",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "type": "module"
+}
