@@ -1,0 +1,19 @@
+# environment file
+.env
+
+# Database
+db.sqlite3
+*.db
+
+# Media uploads (avatars, etc.)
+media/
+avatars/
+device_avatars/
+
+# Static files
+static/
+staticfiles/
+
+# Logs
+*.log
+logs/
