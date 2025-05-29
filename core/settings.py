@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from decouple import config
 import dj_database_url
-import cloudinary # if you use cloudinary, adjust this later
 
 # Load environment variables from .env file (for local development only)
 # Railway will inject its own environment variables directly.
@@ -72,14 +71,12 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'channels',
-    'myapp', # Your custom app
-    # 'cloudinary', # If you add Cloudinary for media files
+    'myapp',
 ]
 
 MIDDLEWARE = [
-    # WhiteNoise must come after SecurityMiddleware and before anything that compresses responses
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # Add for static files in production
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
