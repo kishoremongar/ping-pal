@@ -1,31 +1,37 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-  // Check if user has deviceId cookie (your authentication method)
   const deviceId = request.cookies.get("deviceId")?.value;
+  const { pathname } = request.nextUrl;
 
-  // If no deviceId, redirect to home page
   if (!deviceId) {
-    const homeUrl = new URL("/", request.url);
-    return NextResponse.redirect(homeUrl);
+    const loginSignupUrl = new URL("/", request.url);
+
+    if (pathname !== "/") {
+      return NextResponse.redirect(loginSignupUrl);
+    }
+    return NextResponse.next();
   }
 
-  // If authenticated, allow access
+  if (deviceId && pathname === "/") {
+    return NextResponse.redirect(new URL("/chat", request.url));
+  }
+
   return NextResponse.next();
 }
 
-// Protect all routes except home page
 export const config = {
   matcher: [
     /*
      * Match all request paths except:
-     * - / (home page)
-     * - /api (API routes)
-     * - /_next/static (static files)
-     * - /_next/image (image optimization files)
-     * - /favicon.ico (favicon file)
-     * - /assets (static assets)
+     * - '/api/:path*' (API routes)
+     * - '/_next/static/:path*' (Next.js static files)
+     * - '/_next/image/:path*' (Next.js image optimization files)
+     * - '/favicon.ico' (favicon)
+     * - '/assets/:path*' (your custom assets folder)
+     * - The root path '/' because it's your login/signup page and doesn't require authentication *before* middleware runs.
+     * - Any specific file extensions that should be ignored
      */
-    "/((?!^/$|api|_next/static|_next/image|favicon.ico|assets).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|assets|/$|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js)$).*)",
   ],
 };
